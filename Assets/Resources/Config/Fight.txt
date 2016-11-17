@@ -1,0 +1,7 @@
+﻿ID	名称	怪物列表	金币	勇士经验	介绍	其他奖励
+id	name	monsters	gold	exp	desc	rewards
+int	string	string	int	int	string	string
+1000011	第一场	1001	10	10	遇到一只奇怪的绿色蜗牛	
+1000012	第一场	1001	10	10	一不小心踩到一只绿色蜗牛	
+1000013	第一场	1001	10	10	一只绿色蜗牛气势汹汹的过来	
+1000021	第二场	1002	12	12		

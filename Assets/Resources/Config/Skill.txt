@@ -1,0 +1,5 @@
+﻿ID	名称	图标	介绍
+id	name	icon	desc
+int	string	string	string
+101	冰之咆哮	101	无
+102	火之咆哮	102	无

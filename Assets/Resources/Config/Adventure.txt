@@ -1,0 +1,5 @@
+﻿ID	说明	奖励
+id	desc	rewards
+int	string	string
+1000001	帮组精灵采集果实	2,10
+1000002	击退了拦路抢劫的强盗	2,10

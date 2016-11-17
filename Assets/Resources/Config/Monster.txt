@@ -1,0 +1,6 @@
+﻿ID	名称	类型	等级	图标	品质	星级	体力	物理攻击力	物理防御	魔法攻击力	魔法防御	速度	暴击率	暴击伤害
+id	name	type	level	icon	quality	star	hp	physicalAttack	physicalDefense	magicAttack	magicDefense	speed	critChance	critDamage
+int	string	CardType	int	string	int	int	float	float	float	float	float	float	int	int
+1001	绿蜗牛	0	1	1001	1	1	30	5	1	1	1	5	0	0
+1002	蓝蜗牛	0	1	1002	1	1	40	7	1	1	1	5	0	0
+1003	红蜗牛	0	1	1003	1	1	50	10	2	1	2	6	0	0
