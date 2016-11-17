@@ -1,0 +1,7 @@
+{
+	"bundles":
+	[
+		{"bundleName" : "Resources/Prefabs", "variantName" : "", "assetPath" : "Assets/Resources/Prefabs", "packageType" : "Dir_File"},
+		{"bundleName" : "Resources/Effect/Effect", "variantName" : "", "assetPath" : "Assets/Resources/Effect/Effect.prefab", "packageType" : "File"},
+	]
+}

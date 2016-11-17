@@ -1,0 +1,91 @@
+﻿using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class ConfigManager : TSingleton<ConfigManager>
+{
+
+    ConfigManager() { }
+
+    private bool mLoaded = false;
+    private System.Action loadCompleted = null;
+    private List<string> configs = new List<string>();
+    private Dictionary<string, System.Action<string>> callbacks = new Dictionary<string, System.Action<string>>();
+    private int loadCount = 0;
+
+    /// <summary>
+    /// 加载配置表
+    /// </summary>
+    /// <param name="loadCompleted"></param>
+    public void Load(System.Action loadCompleted)
+    {
+        this.loadCompleted = loadCompleted;
+        configs.Clear();
+        callbacks.Clear();
+
+        //================================
+
+{1}
+        //================================
+
+        loadCount = 0;
+        Load(configs[loadCount]);
+    }
+
+    private void AddLoad(string name, System.Action<string> callback)
+    {
+        configs.Add(name);
+        callbacks.Add(name, callback);
+    }
+
+    private void Load(string name)
+    {
+        ResourceLoadManager.Instance.LoadAssetAsync<TextAsset>(string.Format("Config/{0}", name), ConfigLoadCompleted);
+    }
+
+    private void ConfigLoadCompleted(TextAsset textAsset)
+    {
+        Parse(configs[loadCount], textAsset.text);
+
+        loadCount++;
+        if (loadCount >= configs.Count)
+        {
+            if (this.loadCompleted != null)
+            {
+                this.loadCompleted.Invoke();
+                this.loadCompleted = null;
+                this.mLoaded = true;
+                configs.Clear();
+                callbacks.Clear();
+            }
+        }
+        else
+        {
+            Load(configs[loadCount]);
+        }
+    }
+
+    /// <summary>
+    /// 配置表是否加载完成
+    /// </summary>
+    public bool loaded
+    {
+        get { return this.mLoaded; }
+    }
+
+    private void Parse(string name, string text)
+    {
+        if (callbacks.ContainsKey(name))
+        {
+            callbacks[name].Invoke(text);
+        }
+    }
+
+    private string[] GetConfigParseList(string text)
+    {
+        string[] list = text.Split('\n');
+        return list;
+    }
+
+{2}
+}

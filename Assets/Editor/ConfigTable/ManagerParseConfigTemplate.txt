@@ -1,0 +1,43 @@
+﻿	//================================================================
+
+	private List<{0}ConfigData> {1}ConfigList = new List<{0}ConfigData>();
+	private Dictionary<int, {0}ConfigData> {1}ConfigDict = new Dictionary<int, {0}ConfigData>();
+	
+	private void Parse{0}(string text)
+	{
+		{1}ConfigList.Clear();
+		{1}ConfigDict.Clear();
+		string[] list = GetConfigParseList(text);
+		for (int i = 3; i < list.Length; i++)
+		{
+			if (string.IsNullOrEmpty(list[i]))
+			{
+				continue;
+			}
+			{0}ConfigData configData = new {0}ConfigData(list[i]);
+			if ({1}ConfigDict.ContainsKey(configData.{2}))
+			{
+				Debug.LogWarning(">> Parse{0} > " + configData.{2});
+			}
+			else
+			{
+				{1}ConfigDict.Add(configData.{2}, configData);
+				{1}ConfigList.Add(configData);
+			}
+		}
+	}
+	
+	public {0}ConfigData Get{0}ConfigData(int key)
+	{
+		if ({1}ConfigDict.ContainsKey(key))
+		{
+			return {1}ConfigDict[key];
+		}
+		return null;
+	}
+	
+	public List<{0}ConfigData> Get{0}ConfigList
+	{
+		get { return {1}ConfigList; }
+	}
+	

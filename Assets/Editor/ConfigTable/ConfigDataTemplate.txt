@@ -1,0 +1,12 @@
+﻿using System.Collections;
+
+public class {0}ConfigData
+{
+{1}
+    public {0}ConfigData(string text)
+    {
+        string[] arr = text.Split('\t');
+        int index = 0;
+{2}
+    }
+}
