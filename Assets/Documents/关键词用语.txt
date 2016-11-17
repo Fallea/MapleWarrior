@@ -1,0 +1,34 @@
+奇遇		adventure
+探索		explore
+怪物		monster
+金钱/现金	money
+金币		gold
+行动力		power
+道具		prop
+宝箱		box
+力量		strength
+敏捷		agility
+智力		intellect
+力量缩写	str
+敏捷缩写	agi
+智力缩写	int
+力量成长	strInc
+敏捷成长	agiInc
+智力成长	intInc
+勇士体力	hp
+物理攻击	physicalAttack
+物理防御	physicalDefense
+魔法攻击	magicAttack
+魔法防御	magicDefense
+速度		speed
+暴击率		critChance
+暴击伤害	critDamage
+
+战士		Warrior
+刺客		Assassin
+法师		Mage
+弓手		Archer
+抢手		Gunner
+
+几率		probability
+奖励		Reward
