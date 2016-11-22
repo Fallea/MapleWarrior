@@ -90,6 +90,10 @@ public class CardConfigData
 	/// 暴击伤害
 	/// <summary>
 	public int critDamage { get; private set; }
+	/// <summary>
+	/// 默认技能
+	/// <summary>
+	public int skill { get; private set; }
 
     public CardConfigData(string text)
     {
@@ -117,6 +121,7 @@ public class CardConfigData
 		this.speed = float.Parse(arr[index++]);
 		this.critChance = int.Parse(arr[index++]);
 		this.critDamage = int.Parse(arr[index++]);
+		this.skill = int.Parse(arr[index++]);
 
     }
 }

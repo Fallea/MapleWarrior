@@ -27,12 +27,15 @@ public class CardDetailPanel : UIViewPanel
     public Text critChanceTxt;
     public Text critDamageTxt;
 
+    public SkillItem skillItem;
+
     private Card card;
     private CardConfigData cardConfigData;
 
     protected override void Start()
     {
         base.Start();
+        skillItem.onItemClick = OnItemClick;
     }
 
     public override void Open(object param)
@@ -73,5 +76,12 @@ public class CardDetailPanel : UIViewPanel
         this.magicDefenseTxt.text = card.magicDefense.ToString();
         this.critChanceTxt.text = card.critChance.ToString();
         this.critDamageTxt.text = card.critDamage.ToString();
+
+        this.skillItem.data = cardConfigData.skill;
+    }
+
+    private void OnItemClick(UIViewItem item)
+    {
+        UIManager.Instance.Open(UIPanelUtil.SkillDetailPanel, item.data);
     }
 }

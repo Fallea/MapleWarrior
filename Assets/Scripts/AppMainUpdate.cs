@@ -14,14 +14,14 @@ using System.Collections.Generic;
 
 public class AppMainUpdate : MonoBehaviour
 {
-	private float time;
+    private float time;
 
     void Start()
     {
         ManagerAssistant.Instance.Initialize();
-		UIManager.Instance.Load ();
+        UIManager.Instance.Load();
         ConfigManager.Instance.Load(ConfigLoadCompleted);
-		DataCenterManager.Instance.Initialize ();
+        DataCenterManager.Instance.Initialize();
     }
 
     private void ConfigLoadCompleted()
@@ -32,13 +32,13 @@ public class AppMainUpdate : MonoBehaviour
     void Update()
     {
         Server.Instance.Update();
-		DataCacheManager.Instance.serverTime += (long)(Time.deltaTime * 1000);
-		time += Time.deltaTime;
-		if (time > 10) 
-		{
-			time = 0;
-			DataCenterManager.Instance.Ping();
-		}
+        DataCacheManager.Instance.serverTime += (long)(Time.deltaTime * 1000);
+        time += Time.deltaTime;
+        if (time > 10)
+        {
+            time = 0;
+            DataCenterManager.Instance.Ping();
+        }
     }
 
     /// <summary>

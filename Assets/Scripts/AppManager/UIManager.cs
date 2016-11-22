@@ -49,6 +49,7 @@ public class UIManager : TSingleton<UIManager>
         AddPanelInfo(UIPanelUtil.AreaMapPanel, UIViewPanelType.Second);
         AddPanelInfo(UIPanelUtil.ExplorePanel, UIViewPanelType.Second);
         AddPanelInfo(UIPanelUtil.MapPanel, UIViewPanelType.Third);
+        AddPanelInfo(UIPanelUtil.SkillDetailPanel, UIViewPanelType.Third);
     }
 
     private void AddPanelInfo(string name, UIViewPanelType type)
@@ -419,12 +420,16 @@ public class UIManager : TSingleton<UIManager>
     private int loadAtlasCount = 0;
 
     private UISpriteAtlas cardAtlas;
+    private UISpriteAtlas skillAtlas;
+    private UISpriteAtlas headAtlas;
 
     public void Load()
     {
         //================================
 
         atlases.Add("CardAtlas");
+        atlases.Add("SkillAtlas");
+        atlases.Add("HeadAtlas");
 
         //================================
         loadAtlasCount = 0;
@@ -442,6 +447,17 @@ public class UIManager : TSingleton<UIManager>
             this.cardAtlas = go.GetComponent<UISpriteAtlas>();
             this.cardAtlas.Init();
         }
+        else if (atlases[loadAtlasCount] == "SkillAtlas")
+        {
+            this.skillAtlas = go.GetComponent<UISpriteAtlas>();
+            this.skillAtlas.Init();
+        }
+        else if (atlases[loadAtlasCount] == "HeadAtlas")
+        {
+            this.headAtlas = go.GetComponent<UISpriteAtlas>();
+            this.headAtlas.Init();
+        }
+
 
         loadAtlasCount++;
         if (loadAtlasCount >= atlases.Count)
@@ -474,6 +490,19 @@ public class UIManager : TSingleton<UIManager>
             return null;
         }
         return cardAtlas.GetSprite(name);
+    }
+
+    /// <summary>
+    /// 获取技能的图片
+    /// </summary>
+    public Sprite GetSkillSprite(string name)
+    {
+        if (skillAtlas == null)
+        {
+            Debug.LogError(">> SkillAtlas is null.");
+            return null;
+        }
+        return skillAtlas.GetSprite(name);
     }
 
 }

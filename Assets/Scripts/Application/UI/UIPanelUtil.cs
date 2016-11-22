@@ -25,6 +25,6 @@ public class UIPanelUtil
 
     public const string WorldMapPanel = "WorldMapPanel";
 
-
+    public const string SkillDetailPanel = "SkillDetailPanel";
 
 }
