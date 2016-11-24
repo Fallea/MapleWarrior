@@ -2,7 +2,7 @@
 public enum CardType
 {
 	/// <summary>
-    /// 无职业
+    /// 无职业，通用
     /// </summary>
 	None = 0,
     /// <summary>
