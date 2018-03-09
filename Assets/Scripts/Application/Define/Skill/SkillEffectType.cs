@@ -7,5 +7,9 @@ public enum SkillEffectType
     /// 伤害
     /// </summary>
     Damage = 0,
+    /// <summary>
+    /// BUFF
+    /// </summary>
+    Buff,
 
 }

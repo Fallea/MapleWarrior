@@ -43,6 +43,7 @@ public class UIManager : TSingleton<UIManager>
         AddPanelInfo(UIPanelUtil.MainPanel, UIViewPanelType.Main);
         AddPanelInfo(UIPanelUtil.MessageBoxPanel, UIViewPanelType.Prompt);
         AddPanelInfo(UIPanelUtil.CardPanel, UIViewPanelType.Frist);
+        AddPanelInfo(UIPanelUtil.BagPanel, UIViewPanelType.Frist);
         AddPanelInfo(UIPanelUtil.CardDetailPanel, UIViewPanelType.Second);
         AddPanelInfo(UIPanelUtil.CardLotteryPanel, UIViewPanelType.Frist);
         AddPanelInfo(UIPanelUtil.WorldMapPanel, UIViewPanelType.Frist);
@@ -50,6 +51,7 @@ public class UIManager : TSingleton<UIManager>
         AddPanelInfo(UIPanelUtil.ExplorePanel, UIViewPanelType.Second);
         AddPanelInfo(UIPanelUtil.MapPanel, UIViewPanelType.Third);
         AddPanelInfo(UIPanelUtil.SkillDetailPanel, UIViewPanelType.Third);
+        AddPanelInfo(UIPanelUtil.TeamPanel, UIViewPanelType.Frist);
     }
 
     private void AddPanelInfo(string name, UIViewPanelType type)

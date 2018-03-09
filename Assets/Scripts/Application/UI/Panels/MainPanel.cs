@@ -7,9 +7,11 @@ public class MainPanel : UIViewPanel
 
     public GameObject testBtn;
     public GameObject cardBtn;
+    public GameObject bagBtn;
     public GameObject cardLotteryBtn;
     public GameObject exploreBtn;
     public GameObject worldMapBtn;
+    
 
     public Text playerNameTxt;
     public Text glodTxt;
@@ -25,6 +27,7 @@ public class MainPanel : UIViewPanel
         ButtonClickListener.Get(cardLotteryBtn).onClick = OnCardLotteryBtnClick;
         ButtonClickListener.Get(exploreBtn).onClick = OnExploreBtnClick;
         ButtonClickListener.Get(worldMapBtn).onClick = OnWorldMapBtnClick;
+        ButtonClickListener.Get(bagBtn).onClick = OnBagBtnClick;
 
         OnUpdatePlayer();
         DelegateManager.Instance.Add(DelegateCommand.UpdatePlayer, OnUpdatePlayer);
@@ -61,6 +64,11 @@ public class MainPanel : UIViewPanel
     private void OnCardBtnClick(GameObject go)
     {
         UIManager.Instance.Open(UIPanelUtil.CardPanel);
+    }
+
+    private void OnBagBtnClick(GameObject go)
+    {
+        UIManager.Instance.Open(UIPanelUtil.BagPanel);
     }
 
     private void OnCardLotteryBtnClick(GameObject go)

@@ -9,7 +9,7 @@ public class CaptureCameraTest : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        //CaptureCamera.Capture();
+        //CaptureCamera.Capture(camera1, new Rect(100, 100, 100, 100));
 
     }
 	
@@ -23,7 +23,7 @@ public class CaptureCameraTest : MonoBehaviour {
     {
         if (grab)
         {
-            //CaptureCamera.Capture(new Rect(0, 0, Screen.width, Screen.height));
+            CaptureCamera.Capture(camera1, new Rect(0, 0, Screen.width, Screen.height));
             grab = false;
         }
     }

@@ -5,6 +5,8 @@ public class UIPanelUtil
 
     public const string CardPanel = "CardPanel";
 
+    public const string BagPanel = "BagPanel";
+
     public const string CardDetailPanel = "CardDetailPanel";
 
     public const string CardLotteryPanel = "CardLotteryPanel";
@@ -26,5 +28,7 @@ public class UIPanelUtil
     public const string WorldMapPanel = "WorldMapPanel";
 
     public const string SkillDetailPanel = "SkillDetailPanel";
+
+    public const string TeamPanel = "TeamPanel";
 
 }

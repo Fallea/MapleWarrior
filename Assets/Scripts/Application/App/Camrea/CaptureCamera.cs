@@ -10,7 +10,7 @@ public class CaptureCamera
     public static void Capture()
     {
         string fileName = GetScreenShotName();
-        Application.CaptureScreenshot(fileName, 0);
+        ScreenCapture.CaptureScreenshot(fileName, 0);
         Debug.Log(string.Format("截屏了一张照片: {0}", fileName));
     }
 
@@ -24,7 +24,7 @@ public class CaptureCamera
         camera.Render();
 
         RenderTexture.active = rt;
-        Texture2D screenShot = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.RGB24, false);
+        Texture2D screenShot = new Texture2D((int)rect.width, (int)rect.height, TextureFormat.ARGB32, false);
         screenShot.ReadPixels(rect, 0, 0);
         screenShot.Apply();
 
