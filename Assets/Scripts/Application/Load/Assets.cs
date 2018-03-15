@@ -1,45 +1,54 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// 注：所有目录的使用最后都会带“/”，使用时不需在前面添加
+/// </summary>
 public class Assets
 {
-    //注：所有目录的使用最后都会带“/”，使用时不需在前面添加
+    /// <summary>
+    /// unity发布webgl的文件夹名称
+    /// </summary>
+    public const string UNITY_ROOT = "static/unity/";
 
     public const string SUFFIX = ".assetbundle";
 
     static Assets()
     {
         // StreamingAssets Path
-        string path = string.Empty;
+        StreamingAssetsPath = Application.streamingAssetsPath + "/";
 
+        // StreamingAssets Url Path
         if (Application.platform == RuntimePlatform.Android)
         {
-            path = "jar:file://" + Application.dataPath + "!/assets/";
+            StreamingAssetsUrlPath = StreamingAssetsPath;
         }
-        else if (Application.platform == RuntimePlatform.IPhonePlayer)
+        else if (Application.platform == RuntimePlatform.WebGLPlayer)
         {
-            path = Application.dataPath + "/Raw/";
+            int tempIndex = StreamingAssetsPath.IndexOf("#");
+            if (tempIndex > -1)
+            {
+                StreamingAssetsUrlPath = StreamingAssetsPath.Substring(0, tempIndex) + UNITY_ROOT + "StreamingAssets/";
+            }
+            else
+            {
+                StreamingAssetsUrlPath = StreamingAssetsPath;
+            }
         }
         else
         {
-            path = Application.dataPath + "/StreamingAssets/";
+            StreamingAssetsUrlPath = "file:///" + StreamingAssetsPath;
         }
-        StreamingAssetsPath = path;
 
-
+#if UNITY_EDITOR
+        RuntimeAssetsPath = StreamingAssetsPath;
+        RuntimeAssetsUrlPath = StreamingAssetsUrlPath;
+#else
         //RuntimeAssets Path
-        if (Application.isMobilePlatform)
-        {
-            path = Application.persistentDataPath + "/" + AppConst.AppName + "/";
-        }
-        else
-        {
-            path = Application.dataPath + "/StreamingAssets/";
-        }
-        RuntimeAssetsPath = path;
-
-
+        RuntimeAssetsPath = Application.persistentDataPath + "/";
         //AssetBundle Url Path
-        AssetBundleUrlPath = "file://" + RuntimeAssetsPath;
+        RuntimeAssetsUrlPath = "file:///" + RuntimeAssetsPath;
+#endif
+
     }
 
 
@@ -53,7 +62,16 @@ public class Assets
     }
 
     /// <summary>
-    /// 运行时资源路径，资源拷贝和下载存放的路径，也是运行时资源读取的路径
+    /// 资源包目录，指StreamingAssets路径并能使用WWW加载
+    /// </summary>
+    public static string StreamingAssetsUrlPath
+    {
+        get;
+        private set;
+    }
+
+    /// <summary>
+    /// 运行时资源路径，资源拷贝和下载存放的路径，指Application.persistentDataPath路径
     /// </summary>
     public static string RuntimeAssetsPath
     {
@@ -62,10 +80,10 @@ public class Assets
     }
 
     /// <summary>
-    /// 获得运行时资源包的路径（本地资源），AssetBundle读取路径，即路径前面添加了file://
+    /// 运行时资源路径，资源拷贝和下载存放的路径，指Application.persistentDataPath路径，并能使用WWW加载
     /// </summary>
     /// <returns></returns>
-    public static string AssetBundleUrlPath
+    public static string RuntimeAssetsUrlPath
     {
         get;
         private set;

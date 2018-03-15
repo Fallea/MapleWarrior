@@ -68,13 +68,15 @@ public class DataCenterManager : TSingleton<DataCenterManager>
 
     public void CreateRegiment(string name)
     {
-        NetReceive.Instance.Add(S2CCMD.CreateRegiment, OnGetRegiment);
+        NetReceive.Instance.Add(S2CCMD.CreateRegiment, OnCreateRegiment);
         UIManager.Instance.OpenLoadingPanel();
         NetSender.Instance.SendCreateRegiment(name);
     }
 
     private void OnCreateRegiment(NetResponse netResponse)
     {
+        NetReceive.Instance.Remove(S2CCMD.CreateRegiment, OnCreateRegiment);
+
         CreateRegimentResponse response = (CreateRegimentResponse)netResponse;
         if (response.isCreated)
         {
@@ -85,7 +87,7 @@ public class DataCenterManager : TSingleton<DataCenterManager>
             UIManager.Instance.CloseLoadingPanel();
             Debug.LogWarning(">> OnCreateRegiment > Create Error.");
         }
-        NetReceive.Instance.Remove(S2CCMD.CreateRegiment, OnGetRegiment);
+        
     }
 
     //================================================================
